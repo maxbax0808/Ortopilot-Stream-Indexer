@@ -36,7 +36,7 @@ def extractSongName(image):
 
 if __name__ == '__main__':
     #download('https://www.youtube.com/watch?v=JwBXgJeqeOs')
-    vidcap = cv2.VideoCapture('C:\\Users\\Max\\Nextcloud\\OP-Stream-indexer\\Weds July 14th 21.mp4')
+    vidcap = cv2.VideoCapture('Weds July 14th 21.mp4')
     frame = 0
     vidcap.set(cv2.CAP_PROP_POS_FRAMES, frame)
     success, image = vidcap.read()
