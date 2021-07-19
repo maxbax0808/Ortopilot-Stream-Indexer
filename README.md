@@ -1,7 +1,8 @@
 # Ortopilot-Stream-Indexer
 The Streamer Ortopilot uploads VODs after his streams.
 
-This tool indexes the songs played on stream and gives a time in seconds (maybe give a youtube link?)
+This tool indexes the songs played on stream and gives a time in seconds.
+This is only a rough estimate, since the song title never appears the second the song starts, but a few seconds after the singing starts
 
 ## Usage
 `python main.py [YoutubeURL] [options]`
@@ -19,4 +20,5 @@ Besides all the python requirements (pytesseract, opencv-python, pytube), you ne
 
 
 ## TODO
-Make different crops for different video sizes. Default size is 720p. But if 1080p is available, the crop should differ
+Make different crops for different video sizes. Default size is 720p. But if 1080p is available, the crop should differ.
+Right now only every 10 seconds get sampled. If the song differs, it could go back and see when exactly (to the second) when the song changes
