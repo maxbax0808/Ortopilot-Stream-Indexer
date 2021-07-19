@@ -50,6 +50,7 @@ if __name__ == '__main__':
     else:
         if args.Video:
             vidcap = cv2.VideoCapture(args.Video)
+            title = args.Video
         else:
             print("Please provide an url or a video")
 
