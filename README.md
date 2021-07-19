@@ -16,3 +16,7 @@ This will download and index the video.
 
 ## Requirements
 Besides all the python requirements (pytesseract, opencv-python, pytube), you need [tesseract](https://github.com/tesseract-ocr/tesseract) installed and it needs to be in your PATH
+
+
+## TODO
+Make different crops for different video sizes. Default size is 720p. But if 1080p is available, the crop should differ
