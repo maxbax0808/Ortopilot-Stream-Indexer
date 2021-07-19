@@ -42,8 +42,8 @@ if __name__ == '__main__':
     success, image = vidcap.read()
     crop = image[640:720, 230:230+500]
     currentSongname = extractSongName(crop)
-    oldSongname = ""
-    #print(currentSongname)
+    oldSongname = currentSongname
+
     frame += 30*10
     while success:
         vidcap.set(cv2.CAP_PROP_POS_FRAMES, frame)
@@ -51,6 +51,8 @@ if __name__ == '__main__':
         crop = image[640:720, 230:230 + 500]
         currentSongname = extractSongName(crop)
         if lev(currentSongname, oldSongname)>2:
-            print("Sekunde: %i Songname: %s" % (frame/30, currentSongname))
+            m, s = divmod(frame/30, 60)
+            h, m = divmod(m, 60)
+            print("Timestamp: %d:%02d:%02d; Sekunde: %i; Songname: %s" % (h, m, s, frame/30, currentSongname))
         oldSongname = currentSongname
         frame += 30*10
