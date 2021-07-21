@@ -10,20 +10,15 @@ from Levenshtein import distance as lev
 import argparse
 
 
-def progress(stream, chunk, file_handle, bytes_remaining):
-    contentSize = video.filesize
-    size = contentSize - bytes_remaining
-
-    print('\r' + '[Download progress]:[%s%s]%.2f%%;' % (
-        '█' * int(size * 20 / contentSize), ' ' * (20 - int(size * 20 / contentSize)), float(size / contentSize * 100)),
-          end='')
+def progress(self, stream, chunk):
+    pass
 
 
 def download(url):
     yt = YouTube(url, on_progress_callback=progress)
     video = yt.streams.filter(res="720p").first()
     video.download()
-    return video.title
+    return video.default_filename
 
 
 def extractSongName(image):
@@ -74,7 +69,7 @@ if __name__ == '__main__':
                 args.outputfile.write("Timestamp: {:1.0f}:{:2.0f}:{:2.0f}; Sekunde: {:6.0f}; Songname: {}\n".format(h, m, s, frame/30, currentSongname))
                 args.outputfile.flush()
             else:
-                with open(title, 'a') as outputfile:
+                with open(title + ".txt", 'a') as outputfile:
                     outputfile.write("Timestamp: {:1.0f}:{:2.0f}:{:2.0f}; Sekunde: {:6.0f}; Songname: {}\n".format(h, m, s, frame/30, currentSongname))
                     outputfile.flush()
             print("Timestamp: {:1.0f}:{:2.0f}:{:2.0f}; Sekunde: {:6.0f}; Songname: {}".format(h, m, s, frame/30, currentSongname))
