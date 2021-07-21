@@ -60,6 +60,9 @@ if __name__ == '__main__':
     while success:
         vidcap.set(cv2.CAP_PROP_POS_FRAMES, frame)
         success, image = vidcap.read()
+        if not success:
+            print("Done detecting songs")
+            quit(1)
         crop = image[640:720, 230:230 + 500]
         currentSongname = extractSongName(crop)
         if lev(currentSongname, oldSongname)>2:
